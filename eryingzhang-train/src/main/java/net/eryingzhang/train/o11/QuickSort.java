@@ -2,6 +2,8 @@ package net.eryingzhang.train.o11;
 
 import org.junit.Test;
 
+import net.eryingzhang.train.Util.Util;
+
 public class QuickSort {
 
 	static int partition(Integer[] arr, int start, int end) {
@@ -9,28 +11,20 @@ public class QuickSort {
 			throw new IllegalArgumentException("invalid parameters");
 
 		int base = arr.length / 2;
-		swap(arr, end, base);
+		Util.swap(arr, end, base);
 
 		int small = start - 1;
 		for (int i = start; i < arr.length; i++) {
 			if (arr[i] < arr[end]) {
 				++small;
 				if (small != i)
-					swap(arr, i, small);
+					Util.swap(arr, i, small);
 
 			}
 		}
 		++small;
-		swap(arr, small, end);
+		Util.swap(arr, small, end);
 		return small;
-	}
-
-	static <T> void swap(T[] arr, int a, int b) {
-		if (a == b)
-			return;
-		T temp = arr[a];
-		arr[a] = arr[b];
-		arr[b] = temp;
 	}
 
 	static void quickSort(Integer[] arr, int start, int end) {
